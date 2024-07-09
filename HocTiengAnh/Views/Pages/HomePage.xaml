@@ -1,0 +1,275 @@
+﻿<Page
+    x:Class="HocTiengAnh.Views.Pages.HomePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:HocTiengAnh.Views.Pages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    Title="HomePage"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d"
+    d:Background="White">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="auto" />
+        </Grid.ColumnDefinitions>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="2*" />
+            </Grid.RowDefinitions>
+
+            <Grid>
+                <Border BorderBrush="Black"
+                        CornerRadius="10"
+                        BorderThickness="2">
+                    <DockPanel>
+                        <Grid DockPanel.Dock="Bottom"
+                              Margin="0,0,0,10">
+                            <TextBlock Text="{Binding ViewModel.Question.Ipa}" 
+                                       FontStyle="Italic"
+                                       TextAlignment="Center"
+                                       FontSize="20"
+                                       Visibility="{Binding ViewModel.Visibility}"/>
+                            <Button HorizontalAlignment="Right"
+                                    Margin="3"
+                                    Command="{Binding ViewModel.PlaySoundCommand}">
+                                <ui:SymbolIcon Symbol="Speaker020" />
+                            </Button>
+                        </Grid>
+                        <Grid>
+                            <TextBlock Text="click to word for show data"
+                                       FontSize="8"
+                                       FontStyle="Italic"/>
+                            <TextBlock Text="{Binding ViewModel.Question.Word}"
+                                       TextAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       FontSize="26"
+                                       FontWeight="Black">
+                                <TextBlock.InputBindings>
+                                    <MouseBinding Gesture="LeftClick"
+                                                  Command="{Binding ViewModel.UnHidingCommand}" />
+                                </TextBlock.InputBindings>
+                            </TextBlock>
+                        </Grid>
+                    </DockPanel>
+                </Border>
+            </Grid>
+
+
+            <UniformGrid Grid.Row="1"
+                         Columns="2"
+                         Rows="2">
+                <UniformGrid.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="BorderThickness"
+                                Value="1" />
+                        <Setter Property="BorderBrush"
+                                Value="Black" />
+                        <Setter Property="CornerRadius"
+                                Value="5" />
+                        <Setter Property="Margin"
+                                Value="5" />
+                    </Style>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="FontSize"
+                                Value="16" />
+                        <Setter Property="FontStyle"
+                                Value="Italic" />
+                        <Setter Property="VerticalAlignment"
+                                Value="Center" />
+                        <Setter Property="HorizontalAlignment"
+                                Value="Center" />
+                    </Style>
+
+                    <Style TargetType="Button">
+                        <Setter Property="Background"
+                                Value="WhiteSmoke" />
+                        <Setter Property="BorderBrush"
+                                Value="Black" />
+                        <Setter Property="BorderThickness"
+                                Value="1" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        Value="LightBlue" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                    
+                </UniformGrid.Resources>
+                <Grid>
+                    <Border>
+                        <DockPanel>
+                            <Button DockPanel.Dock="Bottom"
+                                    Content="Chắc chắn"
+                                    Command="{Binding ViewModel.ButtonClickCommand}"
+                                    CommandParameter="0">
+                                
+                            </Button>
+                            <Grid Background="{Binding ViewModel.Question.AnswerABackgroundColor}">
+                                <Grid.InputBindings>
+                                    <MouseBinding Gesture="LeftClick"
+                                                  Command="{Binding ViewModel.AnswerClickCommand}"
+                                                  CommandParameter="0" />
+                                </Grid.InputBindings>
+                                <TextBlock Text="{Binding ViewModel.Question.AnswerA}"
+                                           Visibility="{Binding ViewModel.Visibility}">
+                                </TextBlock>
+                            </Grid>
+                        </DockPanel>
+                    </Border>
+                </Grid>
+
+                <Grid>
+                    <Border>
+                        <DockPanel>
+                            <Button DockPanel.Dock="Bottom"
+                                    Content="Chắc chắn"
+                                    Command="{Binding ViewModel.ButtonClickCommand}"
+                                    CommandParameter="1">
+
+                            </Button>
+                            <Grid Background="{Binding ViewModel.Question.AnswerBBackgroundColor}">
+                                <Grid.InputBindings>
+                                    <MouseBinding Gesture="LeftClick"
+                                                  Command="{Binding ViewModel.AnswerClickCommand}"
+                                                  CommandParameter="1" />
+                                </Grid.InputBindings>
+                                <TextBlock Text="{Binding ViewModel.Question.AnswerB}"
+                                           Visibility="{Binding ViewModel.Visibility}">
+                                </TextBlock>
+                            </Grid>
+                        </DockPanel>
+                    </Border>
+                </Grid>
+
+                <Grid>
+                    <Border>
+                        <DockPanel>
+                            <Button DockPanel.Dock="Bottom"
+                                    Content="Chắc chắn"
+                                    Command="{Binding ViewModel.ButtonClickCommand}"
+                                    CommandParameter="2">
+
+                            </Button>
+                            <Grid Background="{Binding ViewModel.Question.AnswerCBackgroundColor}">
+                                <Grid.InputBindings>
+                                    <MouseBinding Gesture="LeftClick"
+                                                  Command="{Binding ViewModel.AnswerClickCommand}"
+                                                  CommandParameter="2" />
+                                </Grid.InputBindings>
+                                <TextBlock Text="{Binding ViewModel.Question.AnswerC}"
+                                           Visibility="{Binding ViewModel.Visibility}">
+                                </TextBlock>
+                            </Grid>
+                        </DockPanel>
+                    </Border>
+                </Grid>
+
+                <Grid>
+                    <Border>
+                        <DockPanel>
+                            <Button DockPanel.Dock="Bottom"
+                                    Content="Chắc chắn"
+                                    Command="{Binding ViewModel.ButtonClickCommand}"
+                                    CommandParameter="3">
+
+                            </Button>
+                            <Grid Background="{Binding ViewModel.Question.AnswerDBackgroundColor}">
+                                <Grid.InputBindings>
+                                    <MouseBinding Gesture="LeftClick"
+                                                  Command="{Binding ViewModel.AnswerClickCommand}"
+                                                  CommandParameter="3" />
+                                </Grid.InputBindings>
+                                <TextBlock Text="{Binding ViewModel.Question.AnswerD}"
+                                           Visibility="{Binding ViewModel.Visibility}">
+                                </TextBlock>
+                            </Grid>
+                        </DockPanel>
+                    </Border>
+                </Grid>
+
+            </UniformGrid>
+        </Grid>
+
+        <Grid Grid.Column="1"
+              Width="200"
+              Margin="3">
+            <Border BorderThickness="1"
+                    BorderBrush="Black"
+                    CornerRadius="5">
+                <DockPanel Margin="5">
+                    <Button DockPanel.Dock="Bottom"
+                            Content="Select data file"
+                            Width="200"
+                            Command="{Binding ViewModel.SelectDatFileCommand}">
+                    </Button>
+                    <Button DockPanel.Dock="Bottom"
+                            Content="Select words file"
+                            Width="200"
+                            Command="{Binding ViewModel.SelectTxtFileCommand}" />
+
+                    <Button DockPanel.Dock="Bottom"
+                            Content="Start"
+                            Width="200"
+                            Command="{Binding ViewModel.StartLeaningCommand}" />
+
+                    <StackPanel>
+
+                        <TextBlock Text="LEARN INFO"
+                                   FontSize="20"
+                                   FontWeight="SemiBold"
+                                   TextAlignment="Center">
+
+                        </TextBlock>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80" />
+                                <ColumnDefinition Width="120" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="FILE:" />
+                            <TextBlock Grid.Column="1"
+                                       Text="{Binding ViewModel.Data}" />
+                        </Grid>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80" />
+                                <ColumnDefinition Width="120" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="TOTAL:" />
+                            <TextBlock Grid.Column="1"
+                                       Text="{Binding ViewModel.Total}" />
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80" />
+                                <ColumnDefinition Width="120" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="LEARNED:" />
+                            <TextBlock Grid.Column="1"
+                                       Text="{Binding ViewModel.Learned}" />
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80" />
+                                <ColumnDefinition Width="120" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="FAILED:" />
+                            <TextBlock Grid.Column="1"
+                                       Text="{Binding ViewModel.Failed}" />
+                        </Grid>
+                    </StackPanel>
+                </DockPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</Page>
